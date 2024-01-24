@@ -1,0 +1,37 @@
+<div class="container-md">
+    <h2>
+        Adicione um aluno
+    </h2>
+    <form action="" (ngSubmit)="adicionarAluno()">
+        <h3>Nome</h3>
+        <input type="text" class="form-control form-control-lg" [(ngModel)]="nome" name="nome">
+        <h3>Nota1</h3>
+        <input type="number" [max]="10" [min]="0" step="0.1" class="form-control form-control-lg" [(ngModel)]="nota1" name="nota1">
+        <h3>Nota2</h3>
+        <input type="number" [max]="10" [min]="0" step="0.1" class="form-control form-control-lg" [(ngModel)]="nota2" name="nota2">
+        <br>
+        <div class="d-grid gap-1 col-6 mx-auto">
+            <button class="btn btn-primary" type="submit">Adicionar</button>
+        </div>
+    </form>
+    <h2>Nomes:</h2>
+
+    <ul class="list-group list-group-horizontal container-lg">
+        <li class="list-group-item col-5">Nome:</li>
+        <li class="list-group-item col-2">Nota 1:</li>
+        <li class="list-group-item col-2">Nota 2:</li>
+        <li class="list-group-item col-3">Situação:</li>
+      </ul>
+      <ul class="list-group list-group-horizontal container-lg" *ngFor="let aluno of alunos" [ngStyle]="{'background-color': aluno.situacao === 'Aprovado' ? 'green' : 'red'}">
+        <li class="list-group-item col-5">{{aluno.nome}}</li>
+        <li class="list-group-item col-2">{{aluno.nota1}}</li>
+        <li class="list-group-item col-2">{{aluno.nota2}}</li>
+        <li class="list-group-item col-3">Situação: {{aluno.situacao}}
+            <a href="#" role="button" aria-disabled="true" (click)="removerAluno(aluno.id)">
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                Excluir  
+              </span></a></li>
+        
+      </ul>
+
+</div>
